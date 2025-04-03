@@ -13,9 +13,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Vandit Kala | Full-Stack Developer & AI Enthusiast",
+  title: "Vandit Kala | Developer & AI Enthusiast",
   description:
-    "I’m Vandit Kala, a passionate Frontend & Full-Stack Developer with expertise in React.js, Next.js, TypeScript, and MongoDB. I build scalable, high-performance web applications and have experience optimizing React apps, creating custom hooks, and reducing bundle sizes. I’ve worked on AI-driven platforms like Hoonr.ai and UXMagic.ai, integrating AI for automation and efficiency. Let’s connect and build something amazing!",
+    "I’m Vandit Kala, a passionate Frontend & Developer with expertise in React.js, Next.js, TypeScript, and MongoDB. I build scalable, high-performance web applications and have experience optimizing React apps, creating custom hooks, and reducing bundle sizes. I’ve worked on AI-driven platforms like Hoonr.ai and UXMagic.ai, integrating AI for automation and efficiency. Let’s connect and build something amazing!",
 };
 
 export default function RootLayout({
