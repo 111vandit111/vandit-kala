@@ -5,7 +5,7 @@ import Footer from "../../lib/footer";
 
 export default function Home() {
   return (
-    <div className="p-2 bg-secondary-900 relative min-h-screen">
+    <div className="p-2 relative min-h-screen">
       <Image
         src={"/vanditkalaText.png"}
         alt="logo"
@@ -18,11 +18,11 @@ export default function Home() {
         Who&apos;s watching?
       </div>
 
-      <div className="flex gap-24 flex-wrap items-center justify-center">
+      <div className="flex gap-24 gap-y-8 flex-wrap items-center justify-center">
         {profilesCards.map((card, index) => {
           return (
             <div key={index} className="my-4">
-              <ProfileCards {...card} />
+              <ProfileCards {...card } />
             </div>
           );
         })}

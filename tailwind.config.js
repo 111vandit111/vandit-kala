@@ -181,13 +181,13 @@ const tailwindConfig = {
         "spin-slow": "spin-360 2s linear 0s infinite normal none running",
         "caret-blink": "caret-blink 0.7s ease-out infinite",
         "wave-segment": "wave-segment 1.5s ease-in-out infinite",
+        "fade-in": "fade-in 0.5s ease-in-out",
       },
       keyframes: {
         "spin-360": {
           "0%": { transform: "rotate(0deg)" },
           "100%": { transform: "rotate(360deg)" },
         },
-        // fake cursor required for otp input
         "caret-blink": {
           "0%,70%,100%": { opacity: "1" },
           "20%,50%": { opacity: "0" },
@@ -195,6 +195,10 @@ const tailwindConfig = {
         "wave-segment": {
           "0%, 100%": { transform: "scaleY(1) scaleX(1)", borderRadius: "50%" },
           "50%": { transform: "scaleY(2.5) scaleX(0.6)", borderRadius: "25%" },
+        },
+        "fade-in": {
+          "0%": { opacity: "0" },
+          "100%": { opacity: "1" },
         },
       },
       backgroundColor: {

@@ -3,17 +3,21 @@
 import Image from "next/image";
 import React, { useState } from "react";
 import Tooltip from "./tooltip";
+import { useRouter } from "next/navigation";
 
 export interface profileCardsProps {
   image: string;
   name: string;
   tooltip: string;
   gif?: string;
+  redirectionKey: string;
 }
-const ProfileCards = ({ image, name, tooltip,gif }: profileCardsProps) => {
+const ProfileCards = ({ image, name, tooltip,gif, redirectionKey }: profileCardsProps) => {
   const [currImage , setCurrImage] = useState(image);
+  const navigate = useRouter();
+
   return (
-    <div className="flex flex-col gap-6 group cursor-pointer">
+    <div className="flex flex-col gap-6 group cursor-pointer" onClick={()=>navigate.push(`/${redirectionKey}`)}>
       <Image
         src={currImage}
         onMouseEnter={() => {
@@ -30,7 +34,7 @@ const ProfileCards = ({ image, name, tooltip,gif }: profileCardsProps) => {
           {name}
         </p>
         <Tooltip text={tooltip}>
-          <Image src="/info.svg" alt="info" width={15} height={15} />{" "}
+          <Image src="/info.svg" alt="info" width={15} height={15} />
         </Tooltip>
       </div>
     </div>
