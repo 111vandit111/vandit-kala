@@ -45,9 +45,9 @@ const AppPage = () => {
           <p className="font-bold sm:text-xs text-alert-success">#Software Developer</p>
 
         <div className="max-w-[600px] sm:hidden font-semibold mt-2 overflow-hidden transition-transform duration-500">
-          I'm a full-stack developer passionate about building innovative,
+          I&apos;m a full-stack developer passionate about building innovative,
           collaborative web applications. With expertise in Next.js, React, and
-          cloud integrations, I've worked on projects like Uxmagic.ai, where I
+          cloud integrations, I&apos;ve worked on projects like Uxmagic.ai, where I
           created AI-driven wireframes using...
         </div>
 
