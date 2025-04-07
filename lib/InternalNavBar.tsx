@@ -60,10 +60,16 @@ const InternalNavBar = () => {
             alt="Profile"
             width={30}
             height={30}
-            onClick={() => setShowPopup(!showPopup)}
+            onClick={() => {
+              setShowPopup(!showPopup);
+            }}
+            onMouseEnter={() => setShowPopup(true)}
+            onMouseLeave={() => setShowPopup(false)}
           />
           <div
-            className={`absolute hidden right-0 w-max group-hover:block duration-500 transition-all animate-fade-in`}
+            className={`absolute right-0 w-max ${
+              showPopup ? "block" : "hidden"
+            } group-hover:block duration-500 transition-all animate-fade-in`}
           >
             <div
               className={`${
@@ -86,7 +92,12 @@ const InternalNavBar = () => {
         </div>
       </div>
       <div className="hidden sm:flex items-center justify-between px-4 bg-[#1a1c28] w-full">
-        <div className={`flex gap-2 items-center cursor-pointer relative ${openMenu && "bg-white/30 shadow-white shadow-sm"} p-1.5 rounded-lg`} onClick={() => setOpenMenu(!openMenu)}>
+        <div
+          className={`flex gap-2 items-center cursor-pointer relative ${
+            openMenu && "bg-white/30 shadow-white shadow-sm"
+          } p-1.5 rounded-lg`}
+          onClick={() => setOpenMenu(!openMenu)}
+        >
           Menu{" "}
           <span>
             <Image
@@ -94,27 +105,26 @@ const InternalNavBar = () => {
               alt="logo"
               width={20}
               height={20}
-              className={`cursor-pointer transition-transform duration-300 ${openMenu && "rotate-180"}`}
+              className={`cursor-pointer transition-transform duration-300 ${
+                openMenu && "rotate-180"
+              }`}
             />
           </span>
-
-          {
-            openMenu && (
-              <div className="flex flex-col absolute animate-fade-in gap-4 bg-white/5 shadow-lg backdrop-blur-lg shadow-[#1a1c28] w-max p-3 mt-3 rounded-2xl top-8">
-                {NAV_MENU_BY_PROFILE[type as string].map((item, index) => {
-                  return (
-                    <Link
-                      key={index}
-                      href={item.section}
-                      className="text-lg font-[550] text-white"
-                    >
-                      {item.heading}
-                    </Link>
-                  );
-                })}
-              </div>
-            )
-          }
+          {openMenu && (
+            <div className="flex flex-col absolute animate-fade-in gap-4 bg-white/5 shadow-lg backdrop-blur-lg shadow-[#1a1c28] w-max p-3 mt-3 rounded-2xl top-8">
+              {NAV_MENU_BY_PROFILE[type as string].map((item, index) => {
+                return (
+                  <Link
+                    key={index}
+                    href={item.section}
+                    className="text-lg font-[550] text-white"
+                  >
+                    {item.heading}
+                  </Link>
+                );
+              })}
+            </div>
+          )}
         </div>
         <Image
           className="cursor-pointer p-2 mt-2 object-cover"
