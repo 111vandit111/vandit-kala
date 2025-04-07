@@ -15,9 +15,9 @@ const PageLayout = ({children} : Readonly<{
   }>) => {
 
   return (
-    <div className={`${roboto.variable} font-roboto`}>
-        <div className='sm:hidden'> <InternalNavBar /> </div>
-        {children}
+    <div className={`${roboto.variable} font-roboto relative`}>
+        <div className='sm:sticky top-0 w-full z-[1000]'> <InternalNavBar /> </div>
+          {children}
         <Footer isNotHome/>
     </div>
   )

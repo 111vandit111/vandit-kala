@@ -182,6 +182,7 @@ const tailwindConfig = {
         "caret-blink": "caret-blink 0.7s ease-out infinite",
         "wave-segment": "wave-segment 1.5s ease-in-out infinite",
         "fade-in": "fade-in 0.5s ease-in-out",
+        "fade-in-card": "fade-in 0.2s",
       },
       keyframes: {
         "spin-360": {

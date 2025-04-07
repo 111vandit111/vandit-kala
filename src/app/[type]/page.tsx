@@ -6,6 +6,7 @@ import Button from "../../../lib/Button";
 import Tooltip from "../../../lib/tooltip";
 import Carosel from "../../../lib/Carosel";
 import { SKILLS } from "../../../constants";
+import { CldImage } from "next-cloudinary";
 
 const AppPage = () => { 
  const [showExpanded , setShowExpanded] = useState(false);
@@ -71,8 +72,8 @@ const AppPage = () => {
        </Tooltip>
         </div>
         </div>
-        <Image
-          src={"/hero.png"}
+        <CldImage
+          src={"https://res.cloudinary.com/dfwtzxgi5/image/upload/c_fill,g_auto,h_250,w_970/b_rgb:000000,e_gradient_fade,y_-0.50/c_scale,co_rgb:ffffff,fl_relative,l_text:montserrat_25_style_light_align_center:Shop%20Now,w_0.5,y_0.18/v1743753603/40e63003-c30f-42a3-aa0c-cea241c08e00.png"}
           alt="hero"
           width={4500}
           height={4500}
@@ -81,11 +82,11 @@ const AppPage = () => {
         />
       </div>
 
-      <Carosel carouselData={SKILLS} />
+      <Carosel carouselData={SKILLS} id={3} />
 
-      <Carosel carouselData={SKILLS} />
+      <Carosel carouselData={SKILLS} id={2}/>
 
-      <Carosel carouselData={SKILLS} />
+      <Carosel carouselData={SKILLS} id={1}/>
     </div>
   );
 };
