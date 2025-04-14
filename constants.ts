@@ -123,54 +123,63 @@ export const SKILLS : SkillCardProps[] = [
     name: "HTML",
     description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae, laboriosam.",
     speciality: 90,
-    image: "/vanditkalahero.png"
+    image: "/vanditkalahero.png",
+    path: "/html",
   },
   {
     name: "CSS",
     description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae, laboriosam.",
     speciality: 90,
-    image: "/vanditkalahero.png"
+    image: "/vanditkalahero.png",
+    path: "/css",
   },
   {
     name: "Javascript",
     description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae, laboriosam.",
     speciality: 90,
-    image: "/vanditkalahero.png"
+    image: "/vanditkalahero.png",
+    path: "/javascript",
   },
   {
     name: "Typescript",
     description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae, laboriosam.",
     speciality: 90,
-    image: "/vanditkalahero.png"
+    image: "/vanditkalahero.png",
+    path: "/typescript",
   },
   {
     name: "React.js",
     description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae, laboriosam.",
     speciality: 90,
-    image: "/vanditkalahero.png"
+    image: "/vanditkalahero.png",
+    path: "/reactjs",
   },
   {
     name: "Next.js",
     description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae, laboriosam.",
     speciality: 90,
-    image: "/vanditkalahero.png"
+    image: "/vanditkalahero.png",
+    path: "/nextjs",
   },
   {
     name: "Node.js",
     description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae, laboriosam.",
     speciality: 90,
-    image: "/vanditkalahero.png"
+    image: "/vanditkalahero.png",
+    path: "/nodejs",
   },
   {
     name: "MongoDB",
     description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae, laboriosam.",
     speciality: 90,
-    image: "/vanditkalahero.png"
+    image: "/vanditkalahero.png",
+    path: "/mongodb",
   },
   {
     name: "TailwindCSS",
     description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae, laboriosam.",  
     speciality: 90,
-    image: "/vanditkalahero.png"
+    image: "/vanditkalahero.png",
+    path: "/tailwindcss",
   }
 ]

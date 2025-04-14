@@ -1,13 +1,16 @@
+"use client";
 import Image from "next/image";
 import React from "react";
 import Button from "./Button";
 import Tooltip from "./tooltip";
+import { useParams, useRouter } from "next/navigation";
 
 export interface SkillCardProps {
   name: string;
   description: string;
   speciality: number;
   image: string;
+  path: string;
 }
 
 const SkillCard = ({
@@ -15,10 +18,13 @@ const SkillCard = ({
   description,
   speciality,
   image,
+  path,
 }: SkillCardProps) => {
+  const router = useRouter();
+  const { type } = useParams();
   return (
-    <div className="group/cardGroup min-w-[200px] relative z-1 bg-alert hover:z-30">
-      <div className="h-full w-[244px] overflow-hidden rounded group-hover/cardGroup:scale-110 transition-transform duration-300 hover:bg-alert">
+    <div className="group/cardGroup min-w-[180px] rounded-md relative z-1 bg-alert hover:z-30">
+      <div className="h-full w-[184px] overflow-hidden rounded group-hover/cardGroup:scale-120 transition-transform duration-300 hover:bg-alert">
         <Image
           src={image}
           alt={name}
@@ -29,12 +35,12 @@ const SkillCard = ({
       </div>
 
       <div
-        className="absolute w-[270px] bg-black hidden p-4 rounded-b-xl pt-2 left-[-13px] -bottom-[220%] 
+        className="absolute w-[222px] bg-black hidden p-4 rounded-b-xl pt-2 left-[-19px] top-[107%] 
                     shadow-lg transform transition-all group-hover/cardGroup:block animate-fade-in-card z-[1100]"
       >
         <div className="space-y-2">
           <h2 className="text-base font-bold text-white">{name}</h2>
-          <Button variant="glassMoprhism" size="2xl" className="group/button w-full text-center">
+          <Button variant="glassMoprhism" size="2xl" className="group/button w-full text-center" onClick={() => router.push(`/${type}${path}`)}>
             View Details
           </Button>
           <div className="flex gap-2 my-2">
