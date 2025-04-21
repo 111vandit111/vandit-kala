@@ -2,11 +2,14 @@ import React from "react";
 import Carosel from "../../../lib/Carosel";
 import { SKILLS } from "../../../constants";
 import Herosection from "../../../lib/HeroSection/Herosection";
+import SavedProjectsAndSkills from "../../../lib/SavedProjectsAndSkills";
 
 const AppPage = () => {
   return (
-    <div>
+    <div className="mb-40">
       <Herosection />
+     
+      <SavedProjectsAndSkills />
 
       <Carosel carouselData={SKILLS} id={3} />
 

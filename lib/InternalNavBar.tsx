@@ -38,13 +38,14 @@ const InternalNavBar = () => {
             alt="logo"
             width={60}
             height={20}
+            onClick={() => router.push("/"+type)}
           />
           <div className="flex gap-7 md:gap-3.5">
             {NAV_MENU_BY_PROFILE[type as string].map((item, index) => {
               return (
                 <Link
                   key={index}
-                  href={item.section}
+                  href={"/"+type+item.section}
                   className="text-lg md:text-xs font-[550] text-white"
                 >
                   {item.heading}
