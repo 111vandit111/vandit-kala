@@ -3,7 +3,7 @@ import Carousel from '../../../../lib/Carosel'
 import { SKILLS } from '../../../../constants'
 import DetailsHero from '../../../../lib/DetailsHeroSection/DetailsHero'
 
-const Page = () => {
+const page = () => {
   return (
     <div className='mb-40'>
     <DetailsHero />
@@ -12,4 +12,4 @@ const Page = () => {
   )
 }
 
-export default Page
+export default page;
