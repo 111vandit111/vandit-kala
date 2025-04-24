@@ -3,10 +3,11 @@ import Carosel from "../../../lib/Carosel";
 import { SKILLS } from "../../../constants";
 import Herosection from "../../../lib/HeroSection/Herosection";
 import SavedProjectsAndSkills from "../../../lib/SavedProjectsAndSkills";
+import ContactMe from "../../../lib/contactMe";
 
 const AppPage = () => {
   return (
-    <div className="mb-40">
+    <div>
       <Herosection />
      
       <SavedProjectsAndSkills />
@@ -16,6 +17,8 @@ const AppPage = () => {
       <Carosel carouselData={SKILLS} id={2} />
 
       <Carosel carouselData={SKILLS} id={1} />
+
+      <ContactMe />
     </div>
   );
 };

@@ -1,7 +1,8 @@
 import Image from "next/image";
 import { profilesCards } from "../../constants";
-import ProfileCards from "../../lib/profileCards";
 import Footer from "../../lib/footer";
+import ProfileCards from "../../lib/profileCards";
+
 
 export default function Home() {
   return (
