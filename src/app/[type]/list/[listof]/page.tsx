@@ -22,7 +22,7 @@ const ListAll = () => {
     <div className="px-10 py-20 mb-[120px] min-h-[calc(100vh-100px)] ">
         <div className="flex gap-6 items-center justify-between">
         <p className="text-5xl font-bold capitalize my-8">
-            {listof}
+            {decodeURIComponent(listof as string)}
         </p>
       <input
         type="text"

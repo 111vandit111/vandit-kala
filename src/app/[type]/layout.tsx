@@ -15,7 +15,7 @@ const PageLayout = ({children} : Readonly<{
   }>) => {
 
   return (
-    <div className={`${roboto.variable} font-roboto relative`}>
+    <div className={`${roboto.variable} font-roboto relative scroll-smooth`}>
         <div className='sm:sticky top-0 w-full z-[1000]'> <InternalNavBar /> </div>
           {children}
         <Footer isNotHome/>

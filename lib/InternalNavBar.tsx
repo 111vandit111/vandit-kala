@@ -8,10 +8,13 @@ import Button from "./Button";
 import Link from "next/link";
 
 const InternalNavBar = () => {
-  const { type } = useParams();
+  const params = useParams();
   const [showPopup, setShowPopup] = useState<boolean>(false);
   const [openMenu, setOpenMenu] = useState<boolean>(false);
   const [scrolled, setScrolled] = useState<boolean>(false);
+  const { type } = params;
+
+  const isNotHomePage = Object.keys(params).length > 1;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -22,14 +25,19 @@ const InternalNavBar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  //call api here
+  useEffect(() => {
+    console.log(type);
+  },[])
+
   const router = useRouter();
 
   return (
-    <div className="fixed top-0 z-50 w-full px-[6%] sm:px-0 sm:sticky ">
+    <div className={`fixed top-0 z-50 w-full px-[6%] sm:px-0 sm:sticky ${isNotHomePage && "relative h-12 w-screen"}`}>
       <div
         className={`flex justify-between sm:hidden rounded-b-2xl items-center px-3 pr-10 ${
-          scrolled ? "bg-white/5 shadow-lg backdrop-blur-md" : "bg-transparent"
-        }`}
+          scrolled ? "bg-black/50 shadow-lg backdrop-blur-md" : "bg-transparent"
+        } ${isNotHomePage && "fixed w-3/4 left-1/2 -translate-x-1/2"} `}
       >
         <div className="flex gap-5 items-center">
           <Image

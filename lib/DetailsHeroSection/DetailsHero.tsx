@@ -10,7 +10,7 @@ import { useParams } from "next/navigation";
 const DetailsHero = () => {
   const { detail } = useParams();
   return (
-    <div className="relative">
+    <div className="relative h-[calc(100vh-48px)] sm:h-auto min-h-[50dvh] flex items-end">
       <div className="relative p-10 pt-28 z-10 ">
         <div
           className="h-[25vw] md:h-[32.5vw] group/hero flex items-end"
@@ -32,7 +32,7 @@ const DetailsHero = () => {
               #Software Developer
             </p>
 
-            <div className="max-w-[600px] sm:hidden font-semibold mt-2 overflow-hidden transition-transform duration-500">
+            <div className="max-w-[600px] font-semibold mt-2 overflow-hidden transition-transform duration-500">
               I&apos;m a full-stack developer passionate about building
               innovative, collaborative web applications. With expertise in
               Next.js, React, and cloud integrations, I&apos;ve worked on

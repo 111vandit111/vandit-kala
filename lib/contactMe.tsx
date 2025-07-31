@@ -5,8 +5,8 @@ import Image from "next/image";
 
 const ContactMe = () => {
   return (
-    <div className="flex relative overflow-hidden z-10 p-4 mt-20 mb-10 md:flex-col">
-      <div className="my-4 p-10 md:px-2 relative z-10 rounded-lg ">
+    <div className="flex relative overflow-hidden p-4 mt-20 mb-10 md:flex-col">
+      <div className="my-4 p-10 md:px-2 relative rounded-lg ">
         <div className="text-5xl font-bold">Contact Me</div>
         <div className="">
           <input
@@ -65,6 +65,21 @@ const ContactMe = () => {
             >
               <Image
                 src="/linkedin.svg"
+                alt="linkedin"
+                width={30}
+                height={30}
+                className="group-hover/button:invert sm:w-4.5 sm:h-4.5"
+              />
+            </Button>
+          </Tooltip>
+          <Tooltip text="Follow me on Instagram" className="h-full">
+            <Button
+              variant="glassMoprhism"
+              size="icon"
+              className="group/button p-4! sm:p-2!"
+            >
+              <Image
+                src="/instagram.svg"
                 alt="linkedin"
                 width={30}
                 height={30}

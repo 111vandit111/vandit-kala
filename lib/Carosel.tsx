@@ -5,7 +5,7 @@ import SkillCard, { SkillCardProps } from './SkillCard'
 import { useParams, useRouter } from 'next/navigation';
 import Image from 'next/image';
 
-const Carousel = ({carouselData , id , name = "My Skills"} :{carouselData: SkillCardProps[] , id : number , name ?: string}) => {
+const Carousel = ({carouselData , id , name = "My Skills" , listOf} :{carouselData: SkillCardProps[] , id : number , name ?: string , listOf: string}) => {
   const [index, setIndex] = useState(0);
   const [cardsPerPage, setCardsPerPage] = useState(1);
   const router = useRouter();
@@ -45,12 +45,14 @@ const Carousel = ({carouselData , id , name = "My Skills"} :{carouselData: Skill
 
   return (
     <div className="relative w-full px-6 py-10">
-      <div className='flex gap-24 items-center mb-6'>
+      <div className='flex sm:gap-3 gap-28 sm:justify-between  items-center mb-6'>
       <h2 className="text-3xl font-bold text-white">{name}</h2>
 
-      <div className='text-xl font-semibold cursor-pointer flex items-center gap-1' onClick={()=> router.push(`/${type}/list/${type}`)}>
+     {listOf.length > 0 &&
+      <div className='text-xl font-semibold cursor-pointer flex items-center gap-1' onClick={()=> router.push(`/${type}/list/${listOf}`)}>
         See More <Image src={"/chevron.svg"} className='rotate-270' alt="chevron" width={15} height={15} />
       </div>
+     }
       </div>
 
       <div className="relative overflow-x-clip sm:overflow-x-scroll scrollbar-hide">

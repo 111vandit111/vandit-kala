@@ -7,7 +7,7 @@ const page = () => {
   return (
     <div className='mb-40'>
     <DetailsHero />
-    <Carousel name='More Related' carouselData={SKILLS} id={1} />
+    <Carousel name='More Related' carouselData={SKILLS} id={1} listOf='' />
     </div>
   )
 }

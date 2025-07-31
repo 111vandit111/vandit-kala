@@ -6,6 +6,7 @@ import Button from "./Button";
 import Tooltip from "./tooltip";
 import { useParams, useRouter } from "next/navigation";
 import { useSavedProjectContext } from "../hooks/useSavedProjectContext";
+import { TYPES_OF_PROFILES } from "../constants";
 
 export interface SkillCardProps {
   name: string;
@@ -70,37 +71,45 @@ const SkillCard = ({
             View Details
           </Button>
           <div className="flex gap-2 my-2">
-            <Tooltip text={isSaved ? "Unsave Project" : "Save Project"}>
-              <Button
-                variant="glassMoprhism"
-                size="icon"
-                className="group/button p-2! sm:p-2!"
-              >
-                <Image
-                  src={isSaved ? "/sub.svg" : "/add.svg"}
-                  alt={isSaved ? "Remove project" : "Add project"}
-                  width={24}
-                  height={24}
-                  onClick={isSaved ? handleRemove : handleSave}
-                  className={isSaved ? "group-hover/button:invert" : "group-hover/button:invert-0 invert" } 
-                />
-              </Button>
-            </Tooltip>
-            <Tooltip text="Endorse on Linkedin">
-              <Button
-                variant="glassMoprhism"
-                size="icon"
-                className="group/button p-2! sm:p-2!"
-              >
-                <Image
-                  src="/linkedin.svg"
-                  alt="linkedin"
-                  width={24}
-                  height={24}
-                  className="group-hover/button:invert"
-                />
-              </Button>
-            </Tooltip>
+            {type === TYPES_OF_PROFILES.RECRUITER && (
+              <Tooltip text={isSaved ? "Unsave Project" : "Save Project"}>
+                <Button
+                  variant="glassMoprhism"
+                  size="icon"
+                  className="group/button p-2! sm:p-2!"
+                >
+                  <Image
+                    src={isSaved ? "/sub.svg" : "/add.svg"}
+                    alt={isSaved ? "Remove project" : "Add project"}
+                    width={24}
+                    height={24}
+                    onClick={isSaved ? handleRemove : handleSave}
+                    className={
+                      isSaved
+                        ? "group-hover/button:invert"
+                        : "group-hover/button:invert-0 invert"
+                    }
+                  />
+                </Button>
+              </Tooltip>
+            )}
+            {type !== TYPES_OF_PROFILES.FRIENDS_AND_FAMILY && (
+              <Tooltip text="Endorse on Linkedin">
+                <Button
+                  variant="glassMoprhism"
+                  size="icon"
+                  className="group/button p-2! sm:p-2!"
+                >
+                  <Image
+                    src="/linkedin.svg"
+                    alt="linkedin"
+                    width={24}
+                    height={24}
+                    className="group-hover/button:invert"
+                  />
+                </Button>
+              </Tooltip>
+            )}
           </div>
           <div className="flex gap-2 items-center">
             <Image

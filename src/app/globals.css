@@ -8,20 +8,28 @@
   --font-roboto: var(--font-roboto);
 }
 
+html{
+  scroll-behavior: smooth;
+  font-size: 16px;
+  @media screen and (max-width: 1024px) {
+    font-size: 12px;
+  }
+}
 
 body {
   font-family: Arial, Helvetica, sans-serif;
+  scroll-behavior: smooth;
 }
 
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
 }
 
-/* For IE, Edge and Firefox */
 .scrollbar-hide {
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
+  -ms-overflow-style: none;  
+  scrollbar-width: none;  
 }
+
 .skill-grid {
   display: grid;
   gap: 24px;
