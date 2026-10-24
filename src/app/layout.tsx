@@ -14,8 +14,21 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const SITE_URL = "https://vandit-kala.vercel.app";
+
 export const metadata: Metadata = {
-  title: "Vandit Kala | Software Engineer & Problem Solver",
+  metadataBase: new URL(SITE_URL),
+  alternates: { canonical: "/" },
+  applicationName: "Vandit Kala",
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1 },
+  },
+  title: {
+    default: "Vandit Kala | Software Engineer & Problem Solver",
+    template: "%s | Vandit Kala",
+  },
   description:
     "Vandit Kala is a software engineer and problem solver with deep expertise in React.js, Next.js, TypeScript, Node.js, and MongoDB. Building scalable web apps and AI integrations for platforms like Hoonr.ai and UXMagic.ai. Let's build something extraordinary.",
   keywords: [
@@ -60,11 +73,39 @@ export const metadata: Metadata = {
     description:
       "Software engineer and problem solver with a passion for crafting fast, scalable web apps and leveraging AI for efficiency and automation.",
     images: ["/log-w.png"],
-    creator: "@111vandit111 Github", 
   },
   icons: {
     icon: "/log-w.png",
   },
+};
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": `${SITE_URL}/#person`,
+      name: "Vandit Kala",
+      url: SITE_URL,
+      image: `${SITE_URL}/vanditkalahero.png`,
+      jobTitle: "Software Engineer",
+      description:
+        "Software engineer and problem solver specialising in React.js, Next.js, TypeScript, Node.js and MongoDB.",
+      knowsAbout: ["React.js", "Next.js", "TypeScript", "Node.js", "MongoDB", "Generative AI"],
+      sameAs: [
+        "https://github.com/111vandit111",
+        "https://linkedin.com/in/vandit-kala-8293b4200",
+      ],
+    },
+    {
+      "@type": "WebSite",
+      "@id": `${SITE_URL}/#website`,
+      url: SITE_URL,
+      name: "Vandit Kala",
+      inLanguage: "en",
+      publisher: { "@id": `${SITE_URL}/#person` },
+    },
+  ],
 };
 
 export default function RootLayout({
@@ -74,6 +115,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} bg-secondary-900 antialiased text-white`}
       >
