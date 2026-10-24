@@ -1,5 +1,5 @@
-import { profileCardsProps } from "./lib/profileCards";
-import { SkillCardProps } from "./lib/SkillCard";
+import type { profileCardsProps } from "./lib/profileCards";
+import type { ProfileType, Resource } from "./lib/server/limits";
 
 export const TYPES_OF_PROFILES = {
   RECRUITER: "recruiter",
@@ -118,68 +118,37 @@ export const NAV_MENU_BY_PROFILE = {
   ],
 }
 
-export const SKILLS : SkillCardProps[] = [
-  {
-    name: "HTML",
-    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae, laboriosam.",
-    speciality: 90,
-    image: "/vanditkalahero.png",
-    path: "/html",
+export const isProfileType = (value: string): value is ProfileType =>
+  Object.keys(PROFILE_IMAGES).includes(value);
+
+export type SectionKey = Resource | "saved";
+
+export const SECTION_TITLES_BY_PROFILE: Record<ProfileType, Partial<Record<SectionKey, string>>> = {
+  recruiter: {
+    projects: "Featured Projects",
+    skills: "Skills & Expertise",
+    experience: "Professional Experience",
+    education: "Education",
+    saved: "Shortlisted Projects",
   },
-  {
-    name: "CSS",
-    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae, laboriosam.",
-    speciality: 90,
-    image: "/vanditkalahero.png",
-    path: "/css",
+  personal: {
+    projects: "Things I built instead of sleeping",
+    skills: "Stuff I can do (allegedly)",
+    experience: "Places that pay me",
+    education: "Where I learned to Google",
+    saved: "Your favourites (my greatest hits)",
   },
-  {
-    name: "Javascript",
-    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae, laboriosam.",
-    speciality: 90,
-    image: "/vanditkalahero.png",
-    path: "/javascript",
+  stalker: {
+    projects: "Stuff I made, since you're looking",
+    skills: "Things I'm okay at, please clap",
+    experience: "Where I've worked (the boring bit)",
+    education: "Where I learned to Google",
+    saved: "Your bookmarks, you absolute detective",
   },
-  {
-    name: "Typescript",
-    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae, laboriosam.",
-    speciality: 90,
-    image: "/vanditkalahero.png",
-    path: "/typescript",
-  },
-  {
-    name: "React.js",
-    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae, laboriosam.",
-    speciality: 90,
-    image: "/vanditkalahero.png",
-    path: "/reactjs",
-  },
-  {
-    name: "Next.js",
-    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae, laboriosam.",
-    speciality: 90,
-    image: "/vanditkalahero.png",
-    path: "/nextjs",
-  },
-  {
-    name: "Node.js",
-    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae, laboriosam.",
-    speciality: 90,
-    image: "/vanditkalahero.png",
-    path: "/nodejs",
-  },
-  {
-    name: "MongoDB",
-    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae, laboriosam.",
-    speciality: 90,
-    image: "/vanditkalahero.png",
-    path: "/mongodb",
-  },
-  {
-    name: "TailwindCSS",
-    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae, laboriosam.",  
-    speciality: 90,
-    image: "/vanditkalahero.png",
-    path: "/tailwindcss",
-  }
-]
+};
+
+export const CONTACT_TONE: Record<ProfileType, { cta: string; heading: string }> = {
+  recruiter: { cta: "Hire / Contact Vandit", heading: "Let's talk about your team" },
+  personal: { cta: "Poke me", heading: "Friends and family: WhatsApp me" },
+  stalker: { cta: "Say hi, stranger", heading: "Slide into my inbox (politely)" },
+};

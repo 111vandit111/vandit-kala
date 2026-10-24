@@ -1,49 +1,34 @@
-"use client";
+import React from "react";
+import { notFound } from "next/navigation";
+import ListAll from "../../../../../lib/ListAll";
+import { SECTION_TITLES_BY_PROFILE, isProfileType } from "../../../../../constants";
+import { getCards } from "../../../../../lib/server/cardMapper";
+import { RESOURCES, type Resource } from "../../../../../lib/server/limits";
 
-import React, { useState } from "react";
-import { SKILLS } from "../../../../../constants";
-import SkillCard from "../../../../../lib/SkillCard";
-import { useParams } from "next/navigation";
+export const dynamic = "force-dynamic";
 
-const ListAll = () => {
-  const [search, setSearch] = useState("");
+const LISTABLE_RESOURCES = RESOURCES.filter((resource) => resource !== "texts");
 
-  const { listof } = useParams();
+const isListable = (value: string): value is Resource => LISTABLE_RESOURCES.some((resource) => resource === value);
 
-  const listOfSkills = SKILLS.filter((skill) => {
-    if (search === "") return true;
+const ListPage = async ({ params }: { params: Promise<{ type: string; listof: string }> }) => {
+  const { type, listof } = await params;
+  if (!isProfileType(type) || !isListable(listof)) notFound();
+
+  const title = SECTION_TITLES_BY_PROFILE[type][listof] ?? listof;
+
+  try {
+    const cards = await getCards(listof);
+    return <ListAll title={title} cards={cards} />;
+  } catch (error) {
+    console.error("List page failed to load:", error instanceof Error ? error.message : error);
     return (
-      skill.description.toLowerCase().includes(search.toLowerCase()) ||
-      skill.name.toLowerCase().includes(search.toLowerCase())
+      <div role="alert" className="px-10 py-32 text-center sm:px-5">
+        <h1 className="text-3xl font-bold capitalize">{title}</h1>
+        <p className="mt-4 text-secondary-400">We could not load this list. Please refresh in a moment.</p>
+      </div>
     );
-  });
-
-  return (
-    <div className="px-10 py-20 mb-[120px] min-h-[calc(100vh-100px)] ">
-        <div className="flex gap-6 items-center justify-between">
-        <p className="text-5xl font-bold capitalize my-8">
-            {listof}
-        </p>
-      <input
-        type="text"
-        placeholder="Search"
-        className="max-w-[400px] w-full my-6 p-2 rounded-md border border-default-gray"
-        onChange={(e) => setSearch(e.target.value)}
-      />
-      </div>
-
-      <div
-        className="
-         skill-grid"
-      >
-        {listOfSkills.map((skill, index) => (
-          <div key={index} className="w-fit mx-auto">
-            <SkillCard {...skill} />
-          </div>
-        ))}
-      </div>
-    </div>
-  );
+  }
 };
 
-export default ListAll;
+export default ListPage;

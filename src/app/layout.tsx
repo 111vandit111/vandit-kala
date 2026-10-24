@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { SavedProjectProvider } from "../../hooks/useSavedProjectContext";
+import IntroLoader from "../../lib/IntroLoader";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -14,12 +15,13 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Vandit Kala | Frontend Developer & AI Enthusiast",
+  title: "Vandit Kala | Software Engineer & Problem Solver",
   description:
-    "Vandit Kala is a skilled Frontend Developer with deep expertise in React.js, Next.js, TypeScript, and MongoDB. Specializing in scalable web apps and AI integrations for platforms like Hoonr.ai and UXMagic.ai. Let's build something extraordinary.",
+    "Vandit Kala is a software engineer and problem solver with deep expertise in React.js, Next.js, TypeScript, Node.js, and MongoDB. Building scalable web apps and AI integrations for platforms like Hoonr.ai and UXMagic.ai. Let's build something extraordinary.",
   keywords: [
     "Vandit Kala",
-    "Frontend Developer",
+    "Software Engineer",
+    "Problem Solver",
     "Next.js Developer",
     "React.js Developer",
     "TypeScript Developer",
@@ -28,7 +30,7 @@ export const metadata: Metadata = {
     "Hoonr.ai",
     "UXMagic.ai",
     "Full-Stack Developer",
-    "Software Engineer",
+    "Backend Developer",
     "Web Development",
     "Generative AI",
     "Custom Hooks",
@@ -37,9 +39,9 @@ export const metadata: Metadata = {
   authors: [{ name: "Vandit Kala", url: "https://vandit-kala.vercel.app" }],
   creator: "Vandit Kala",
   openGraph: {
-    title: "Vandit Kala | Frontend Developer & AI Enthusiast",
+    title: "Vandit Kala | Software Engineer & Problem Solver",
     description:
-      "Explore the portfolio of Vandit Kala, a developer building high-performance React/Next.js apps and integrating AI to solve complex problems.",
+      "Explore the portfolio of Vandit Kala, a software engineer building high-performance React/Next.js apps and integrating AI to solve complex problems.",
     url: "https://vandit-kala.vercel.app",
     siteName: "Vandit Kala",
     images: [
@@ -54,9 +56,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Vandit Kala | Frontend Developer & AI Enthusiast",
+    title: "Vandit Kala | Software Engineer & Problem Solver",
     description:
-      "Developer with a passion for crafting fast, scalable web apps and leveraging AI for efficiency and automation.",
+      "Software engineer and problem solver with a passion for crafting fast, scalable web apps and leveraging AI for efficiency and automation.",
     images: ["/log-w.png"],
     creator: "@111vandit111 Github", 
   },
@@ -75,6 +77,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} bg-secondary-900 antialiased text-white`}
       >
+        <IntroLoader />
         <SavedProjectProvider>
         {children}
         </SavedProjectProvider>

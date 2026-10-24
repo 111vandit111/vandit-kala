@@ -29,9 +29,9 @@ const Footer = ({isNotHome = false}: Readonly<{isNotHome?: boolean}>) => {
           alt="logo"
           width={100}
           height={50}
-          className="rounded-full cursor-pointer invert-100 object-cover h-[40px]"
+          className="rounded-full cursor-pointer invert-100 object-cover h-[40px] w-auto"
         />
-        <p className="text-sm text-center font-bold"> © 2025</p>
+        <p className="text-sm text-center font-bold"> © {new Date().getFullYear()}</p>
       </div>
     </div>
   );

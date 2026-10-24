@@ -22,9 +22,14 @@ export const useLocalStorage = () => {
       if (!isClient || !key) return null;
       const item = localStorage.getItem(key);
       if(!item) return;
-      const parsed = JSON.parse(item);
-      console.log(parsed);
-      const filtered = parsed.filter((item: { name: string; }) => item.name !== id);
+      let parsed: unknown;
+      try {
+        parsed = JSON.parse(item);
+      } catch {
+        return;
+      }
+      if (!Array.isArray(parsed)) return;
+      const filtered = parsed.filter((entry: { name: string; }) => entry.name !== id);
       localStorage.setItem(key, JSON.stringify(filtered));
       window.dispatchEvent(new CustomEvent("savedProjectsUpdated"));
     };

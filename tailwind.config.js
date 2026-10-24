@@ -93,6 +93,12 @@ export const colors = {
   base: {
     primary: "#695ACC",
   },
+  prime: {
+    DEFAULT: "#1A98FF",
+    dark: "#0F79D0",
+    navy: "#0F171E",
+    navyLight: "#1A242F",
+  },
 };
 
 const rotateX = plugin(({ addUtilities }) => {
@@ -147,6 +153,7 @@ const tailwindConfig = {
       black: colors.black,
       white: colors.white,
       primary: colors.primary,
+      prime: colors.prime,
       secondary: colors.secondary,
       framework: colors.framework,
       status: colors.status,

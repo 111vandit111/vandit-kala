@@ -2,13 +2,14 @@
 
 import React, { useEffect, useRef, useState } from 'react'
 import SkillCard, { SkillCardProps } from './SkillCard'
-import { useParams, useRouter } from 'next/navigation';
+import { useParams } from 'next/navigation';
 import Image from 'next/image';
+import Link from 'next/link';
+import type { Resource } from './server/limits';
 
-const Carousel = ({carouselData , id , name = "My Skills"} :{carouselData: SkillCardProps[] , id : number , name ?: string}) => {
+const Carousel = ({carouselData , name = "My Skills" , listof} :{carouselData: SkillCardProps[] , id ?: number , name ?: string , listof ?: Resource}) => {
   const [index, setIndex] = useState(0);
   const [cardsPerPage, setCardsPerPage] = useState(1);
-  const router = useRouter();
   const { type } = useParams();
   const containerRef = useRef<HTMLDivElement>(null);
   const cardWidth = 184;
@@ -44,29 +45,30 @@ const Carousel = ({carouselData , id , name = "My Skills"} :{carouselData: Skill
   };
 
   return (
-    <div className="relative w-full px-6 py-10">
-      <div className='flex gap-24 items-center mb-6'>
-      <h2 className="text-3xl font-bold text-white">{name}</h2>
+    <div role="region" aria-label={name} className="relative z-0 w-full px-6 py-8 hover:z-30 focus-within:z-30 sm:px-8">
+      <div className='mb-4 flex items-center justify-between gap-4'>
+        <h2 className="text-2xl font-bold text-white sm:text-xl">{name}</h2>
 
-      <div className='text-xl font-semibold cursor-pointer flex items-center gap-1' onClick={()=> router.push(`/${type}/list/${type}`)}>
-        See More <Image src={"/chevron.svg"} className='rotate-270' alt="chevron" width={15} height={15} />
-      </div>
+        {listof && (
+          <Link href={`/${type}/list/${listof}`} className='flex min-h-11 shrink-0 items-center gap-1 rounded text-base font-semibold text-prime hover:text-white focus-visible:ring-2 focus-visible:ring-prime outline-none'>
+            See More <Image src={"/chevron.svg"} className='rotate-270' alt="" width={15} height={15} />
+          </Link>
+        )}
       </div>
 
-      <div className="relative overflow-x-clip sm:overflow-x-scroll scrollbar-hide">
+      <div className="relative -mx-6 overflow-x-clip px-6 sm:-mx-8 sm:snap-x sm:overflow-x-auto sm:px-8 sm:py-1 scrollbar-hide">
 
         <div className="" ref={containerRef}>
           <div
-            className={`flex transition-transform duration-500 ease-in-out gap-2 relative z-10 pl-3`}
+            className={`flex transition-transform duration-500 ease-in-out gap-2 relative pl-3 sm:pl-0`}
             style={{
               transform: `translateX(-${index * (cardWidth * cardsPerPage + gap*cardsPerPage)}px)`,
-              zIndex: 9+(2*id),
             }}
           >
-            {carouselData.map((card, id) => (
+            {carouselData.map((card) => (
              <div
-             key={id}
-             className='relative'
+             key={card.path}
+             className='relative sm:snap-start'
              style={{ minWidth: `${cardWidth}px`, maxWidth: `${cardWidth}px` }}
            >
              <SkillCard {...card} />
@@ -76,26 +78,26 @@ const Carousel = ({carouselData , id , name = "My Skills"} :{carouselData: Skill
            {index > 0 && (
           <button
             onClick={handlePrev}
+            aria-label={`Previous ${name}`}
             style={{ zIndex: 20 , left: `${index * (cardWidth * cardsPerPage + gap*cardsPerPage)}px` }}
             className="absolute top-1/2 -translate-y-1/2 bg-black/70 hover:bg-black/90 rounded-xl h-[calc(100%+32px)] sm:hidden text-xl font-semibold px-4 py-3 text-white"
           >
-            <Image src={"/chevron.svg"} className='rotate-90 max-w-none' alt="chevron" width={15} height={15} />
+            <Image src={"/chevron.svg"} className='rotate-90 max-w-none' alt="" width={15} height={15} />
           </button>
         )}
 
         {index < maxIndex && (
           <button
             onClick={handleNext}
+            aria-label={`Next ${name}`}
             style={{ zIndex: 20 , right: `-${index * (cardWidth * cardsPerPage + gap*cardsPerPage)}px` }}
             className="absolute top-1/2 -translate-y-1/2 bg-black/70 hover:bg-black/90 p-2 rounded-xl h-[calc(100%+32px)] sm:hidden text-xl font-semibold px-4 py-3 text-white"
           >
-            <Image src={"/chevron.svg"} className='rotate-270' alt="chevron" width={15} height={15} />
+            <Image src={"/chevron.svg"} className='rotate-270' alt="" width={15} height={15} />
           </button>
         )}
 
           </div>
-
-          
         </div>
       </div>
     </div>

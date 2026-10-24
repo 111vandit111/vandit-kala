@@ -1,18 +1,12 @@
 import type { NextConfig } from "next";
+import { ALLOWED_IMAGE_HOSTS } from "./lib/imageHosts";
 
 const nextConfig: NextConfig = {
-  /* config options here */
   images: {
-    remotePatterns:[
-      {
-        protocol: 'https',
-        hostname: 'media1.tenor.com',
-      },
-      {
-        protocol: 'https',
-        hostname: 'res.cloudinary.com',
-      }
-    ],
+    remotePatterns: ALLOWED_IMAGE_HOSTS.map((hostname) => ({
+      protocol: "https",
+      hostname,
+    })),
   },
 };
 

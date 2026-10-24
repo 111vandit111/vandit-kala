@@ -1,17 +1,19 @@
 import Image from "next/image";
 import { profilesCards } from "../../constants";
 import Footer from "../../lib/footer";
+import AddProfileTile from "../../lib/AddProfileTile";
 import ProfileCards from "../../lib/profileCards";
 
 
 export default function Home() {
   return (
-    <div className="p-2 relative min-h-screen">
+    <div className="relative min-h-screen">
+      <div className="p-2">
       <Image
         src={"/vanditkalaText.png"}
         alt="logo"
         width={100}
-        height={50}
+        height={100}
         className="rounded-full cursor-pointer invert-100"
       />
 
@@ -28,16 +30,8 @@ export default function Home() {
           );
         })}
 
-        <div className="group flex flex-col gap-4 xs:mb-4 cursor-pointer">
-          <div className="rounded-full w-[200px] bg-alert-purple-light/90 text-7xl font-bold h-[200px] flex text-secondary-400 items-center justify-center object-cover group-hover:border-2 border-white">
-             +
-          </div>
-        <div className="flex gap-2 items-center justify-center max-w-[200px]">
-        <p className="text-lg text-center font-bold text-secondary-400 group-hover:text-primary-25">
-          Add New
-        </p>
+        <AddProfileTile />
       </div>
-        </div>
       </div>
 
       <Footer />

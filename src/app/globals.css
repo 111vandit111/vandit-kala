@@ -57,3 +57,142 @@ body {
     grid-template-columns: repeat(6, 1fr);
   }
 }
+
+/* Intro loader */
+.intro-overlay {
+  opacity: 1;
+}
+
+.intro-overlay-out {
+  animation: intro-fade-out 0.5s ease-in forwards;
+  pointer-events: none;
+}
+
+.intro-logo {
+  animation: intro-logo-in 0.7s ease-out both;
+}
+
+.intro-arc {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  filter: drop-shadow(0 0 6px rgba(26, 152, 255, 0.9)) drop-shadow(0 0 14px rgba(26, 152, 255, 0.5));
+  animation: intro-arc-draw 1.4s cubic-bezier(0.65, 0, 0.35, 1) 0.3s forwards;
+}
+
+@keyframes intro-logo-in {
+  from {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes intro-arc-draw {
+  from {
+    stroke-dashoffset: 1;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes intro-fade-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .intro-logo {
+    animation: none;
+  }
+
+  .intro-arc {
+    animation: none;
+    stroke-dashoffset: 0;
+    filter: none;
+  }
+
+  .intro-overlay-out {
+    animation: intro-fade-out 0.3s linear forwards;
+  }
+}
+
+/* Prime-style detail and billboard surfaces */
+@theme {
+  --color-prime-night: #05080f;
+}
+
+.rise-in {
+  animation: rise-in 0.6s ease-out both;
+}
+
+.rise-in-delay {
+  animation: rise-in 0.6s ease-out 0.12s both;
+}
+
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rise-in,
+  .rise-in-delay {
+    animation: none;
+  }
+}
+
+/* Hero portrait: fades into the hero on desktop, plain rounded card on mobile */
+.portrait-in {
+  animation: portrait-in 0.8s ease-out 0.1s both;
+}
+
+@keyframes portrait-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.hero-portrait-fade {
+  -webkit-mask-image: linear-gradient(to right, transparent 0, #000 34%),
+    linear-gradient(to top, transparent 0, #000 26%);
+  mask-image: linear-gradient(to right, transparent 0, #000 34%),
+    linear-gradient(to top, transparent 0, #000 26%);
+  -webkit-mask-composite: source-in;
+  mask-composite: intersect;
+}
+
+@media (max-width: 768px) {
+  .hero-portrait-fade {
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .portrait-in {
+    animation: none;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}

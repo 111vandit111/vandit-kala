@@ -6,6 +6,9 @@ interface buttonProps {
   size?: string;
   className?: string;
   onClick?: () => void;
+  type?: "button" | "submit";
+  disabled?: boolean;
+  ariaLabel?: string;
 }
 
 const Button = ({
@@ -14,8 +17,13 @@ const Button = ({
   size,
   className,
   onClick,
+  type = "button",
+  disabled,
+  ariaLabel,
 }: buttonProps) => {
   const buttonVairants: Record<string, string> = {
+    prime:
+      "bg-prime text-white rounded-lg px-3 py-1 font-semibold hover:bg-prime-dark disabled:opacity-50 disabled:cursor-not-allowed",
     primary: "bg-primary-500 px-3 py-1 rounded-lg",
     secondary: "bg-secondary-500 px-3 py-1 rounded-lg",
     alert: "bg-alert-500 px-3 py-1 rounded-lg",
@@ -37,10 +45,13 @@ const Button = ({
   };
   return (
     <button
+      type={type}
       onClick={onClick}
+      disabled={disabled}
+      aria-label={ariaLabel}
       className={`${buttonVairants[variant || "primary"]} ${
         buttonSizes[size || "md"]
-      } ${className} cursor-pointer`}
+      } ${className ?? ""} focus-visible:outline-2 focus-visible:outline-prime cursor-pointer`}
     >
       {children}
     </button>
