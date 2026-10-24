@@ -17,7 +17,7 @@ export default function Home() {
         className="rounded-full cursor-pointer invert-100"
       />
 
-      <h1 className="sr-only">Vandit Kala – Software Engineer &amp; Problem Solver</h1>
+      <h1 className="sr-only">Vandit Kala – Portfolio of a Software Engineer &amp; Problem Solver</h1>
       <p className="sr-only">
         Portfolio of Vandit Kala, a software engineer building scalable web apps and AI
         integrations with React.js, Next.js, TypeScript, Node.js and MongoDB.

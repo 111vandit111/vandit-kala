@@ -1,4 +1,5 @@
 import React from 'react'
+import type { Metadata } from 'next'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import Carousel from '../../../../lib/Carosel'
@@ -155,6 +156,29 @@ const relatedCards = async (resource: Resource, slug: string, doc: ContentDoc): 
     more: sameResource.filter((card) => card.path !== currentPath),
     current: sameResource[currentIndex],
     rank: currentIndex + 1,
+  }
+}
+
+const CANONICAL_PROFILE = 'recruiter'
+
+export async function generateMetadata({ params }: { params: Promise<{ type: string; detail: string[] }> }): Promise<Metadata> {
+  const { type, detail } = await params
+  if (!isProfileType(type) || detail.length !== DETAIL_SEGMENT_COUNT) return {}
+  const [resource, slug] = detail
+  if (!isDetailResource(resource)) return {}
+  const robots = type === CANONICAL_PROFILE ? undefined : { index: false, follow: true }
+  try {
+    const doc = await getPublicBySlug(resource, slug)
+    const title = text(doc.name) || text(doc.role) || text(doc.institution)
+    const description = text(doc.description) || text(doc.summary) || text(doc.degree)
+    return {
+      title,
+      description: description || undefined,
+      alternates: { canonical: `/${CANONICAL_PROFILE}/${resource}/${slug}` },
+      robots,
+    }
+  } catch {
+    return { robots }
   }
 }
 

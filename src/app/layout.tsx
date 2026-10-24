@@ -27,13 +27,15 @@ export const metadata: Metadata = {
     googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1 },
   },
   title: {
-    default: "Vandit Kala | Software Engineer & Problem Solver",
+    default: "Vandit Kala | Portfolio – Software Engineer & Problem Solver",
     template: "%s | Vandit Kala",
   },
   description:
-    "Vandit Kala is a software engineer and problem solver with deep expertise in React.js, Next.js, TypeScript, Node.js, and MongoDB. Building scalable web apps and AI integrations for platforms like Hoonr.ai and UXMagic.ai. Let's build something extraordinary.",
+    "Vandit Kala's portfolio: a software engineer and problem solver with deep expertise in React.js, Next.js, TypeScript, Node.js, and MongoDB. Building scalable web apps and AI integrations for platforms like Hoonr.ai and UXMagic.ai. Let's build something extraordinary.",
   keywords: [
     "Vandit Kala",
+    "Vandit Kala portfolio",
+    "Vandit Kala software engineer",
     "Software Engineer",
     "Problem Solver",
     "Next.js Developer",
@@ -53,7 +55,7 @@ export const metadata: Metadata = {
   authors: [{ name: "Vandit Kala", url: "https://vandit-kala.vercel.app" }],
   creator: "Vandit Kala",
   openGraph: {
-    title: "Vandit Kala | Software Engineer & Problem Solver",
+    title: "Vandit Kala | Portfolio – Software Engineer & Problem Solver",
     description:
       "Explore the portfolio of Vandit Kala, a software engineer building high-performance React/Next.js apps and integrating AI to solve complex problems.",
     url: "https://vandit-kala.vercel.app",
@@ -70,7 +72,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Vandit Kala | Software Engineer & Problem Solver",
+    title: "Vandit Kala | Portfolio – Software Engineer & Problem Solver",
     description:
       "Software engineer and problem solver with a passion for crafting fast, scalable web apps and leveraging AI for efficiency and automation.",
     images: ["/log-w.png"],
