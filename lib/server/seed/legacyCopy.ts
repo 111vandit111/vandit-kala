@@ -41,6 +41,12 @@ export const LEGACY_FIELDS: LegacyField[] = [
   {
     "resource": "experience",
     "slug": "northstarz-ai",
+    "field": "role",
+    "value": "Software Development Engineer (7-engineer team)"
+  },
+  {
+    "resource": "experience",
+    "slug": "northstarz-ai",
     "field": "summary",
     "value": "Frontend lead on an AI hiring and talent CRM platform serving 20+ enterprise clients including Mahindra. Owns frontend architecture, sets engineering standards and ships real-time AI features end to end."
   },

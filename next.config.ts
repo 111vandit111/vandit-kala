@@ -2,6 +2,7 @@ import type { NextConfig } from "next";
 import { ALLOWED_IMAGE_HOSTS } from "./lib/imageHosts";
 
 const nextConfig: NextConfig = {
+  serverExternalPackages: ["@google/adk"],
   images: {
     remotePatterns: ALLOWED_IMAGE_HOSTS.map((hostname) => ({
       protocol: "https",

@@ -137,7 +137,7 @@ const RecruiterSkills = ({ skills, title, type, emptyText }: { skills: CardProps
     ) : (
       <div className="px-6 py-8 sm:px-5">
         <SectionHeading>{title}</SectionHeading>
-        <div className="grid grid-cols-3 gap-4 md:grid-cols-2 sm:grid-cols-1">
+        <div className="grid grid-cols-3 gap-4 md:grid-cols-2 sm:grid-cols-1!">
           {skills.slice(0, RECRUITER_SKILL_PREVIEW_COUNT).map((skill) => (
             <SkillSummaryCard key={skill.path} {...skill} />
           ))}

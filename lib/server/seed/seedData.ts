@@ -474,7 +474,7 @@ export const EXPERIENCE: SeedExperience[] = [
   {
     slug: "northstarz-ai",
     company: "Northstarz.ai",
-    role: "Software Development Engineer (7-engineer team)",
+    role: "Software Development Engineer",
     summary:
       "Software engineer on an AI hiring and talent CRM platform serving 20+ enterprise clients including Mahindra. Owns frontend architecture, sets engineering standards and ships real-time AI features and backend flows end to end.",
     period: "Aug 2025 - Present",

@@ -108,7 +108,7 @@ const ContactMeForm = ({ copy, githubUrl, linkedinUrl, whatsappUrl }: ContactMeF
             placeholder={copy["placeholder.message"]}
             className={`${INPUT_CLASS} text-md resize-none`}
           />
-          <div aria-hidden="true" className="absolute left-[-9999px] h-0 w-0 overflow-hidden">
+          <div aria-hidden="true" className="pointer-events-none absolute left-[-9999px] h-0 w-0 overflow-hidden">
             <label htmlFor="contact-website">Website</label>
             <input
               id="contact-website"

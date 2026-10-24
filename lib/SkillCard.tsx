@@ -102,7 +102,7 @@ const SkillCard = ({
           <h3 className="text-sm font-bold text-white leading-tight line-clamp-2 break-words">{name}</h3>
           {description && <p className="text-xs text-white/85 line-clamp-2 break-words">{description}</p>}
           {(year || (!isPlaceholder && chip)) && (
-            <div className="flex items-center gap-2 text-[11px] font-semibold text-white/70">
+            <div className="flex items-center gap-2 text-xs font-semibold text-white/70">
               {year && <span>{year}</span>}
               {!isPlaceholder && chip && <span className="break-words text-prime">{chip}</span>}
             </div>

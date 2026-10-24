@@ -147,8 +147,8 @@ export const SECTION_TITLES_BY_PROFILE: Record<ProfileType, Partial<Record<Secti
   },
 };
 
-export const CONTACT_TONE: Record<ProfileType, { cta: string; heading: string }> = {
-  recruiter: { cta: "Hire / Contact Vandit", heading: "Let's talk about your team" },
-  personal: { cta: "Poke me", heading: "Friends and family: WhatsApp me" },
-  stalker: { cta: "Say hi, stranger", heading: "Slide into my inbox (politely)" },
+export const CONTACT_TONE: Record<ProfileType, { heading: string }> = {
+  recruiter: { heading: "Let's talk about your team" },
+  personal: { heading: "Friends and family: WhatsApp me" },
+  stalker: { heading: "Slide into my inbox (politely)" },
 };

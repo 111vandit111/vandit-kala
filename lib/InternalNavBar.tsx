@@ -25,7 +25,7 @@ const InternalNavBar = () => {
   const router = useRouter();
 
   return (
-    <div className="fixed top-0 z-50 w-full px-[6%] sm:px-0 sm:sticky ">
+    <div className="fixed top-0 z-50 w-full px-[6%] sm:static sm:px-0">
       <div
         className={`flex justify-between sm:hidden rounded-b-2xl items-center px-3 pr-10 ${
           scrolled ? "bg-white/5 shadow-lg backdrop-blur-md" : "bg-transparent"

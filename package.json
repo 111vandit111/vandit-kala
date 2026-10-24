@@ -15,8 +15,9 @@
     "images:cloudinary": "tsx --env-file=.env.local scripts/uploadImagesToCloudinary.ts"
   },
   "dependencies": {
+    "@google/adk": "^2.3.0",
     "mongoose": "^9.11.4",
-    "next": "15.2.4",
+    "next": "15.5.28",
     "next-cloudinary": "^6.16.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
@@ -29,7 +30,7 @@
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
-    "eslint-config-next": "15.2.4",
+    "eslint-config-next": "15.5.28",
     "tailwindcss": "^4",
     "tsx": "^4.23.15",
     "typescript": "^5",

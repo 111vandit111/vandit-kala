@@ -26,7 +26,7 @@ const ExperienceTimeline = ({ items, type }: { items: ExperienceTimelineItem[]; 
             className="absolute -left-[7px] top-2 h-3.5 w-3.5 rounded-full bg-prime ring-4 ring-prime-navy"
           />
           <div className="rounded-xl bg-prime-navyLight p-6 ring-1 ring-white/10 sm:p-4">
-            <div className="flex items-start gap-4">
+            <div className="flex items-start gap-4 sm:flex-col sm:gap-3">
               <div className="relative h-14 w-28 shrink-0 overflow-hidden rounded-lg ring-1 ring-white/10 sm:w-24">
                 <CardImage
                   src={item.image}

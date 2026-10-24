@@ -13,6 +13,7 @@ export const RATE_LIMITS = {
   login: { max: 5, windowSec: 900 },
   contact: { max: 5, windowSec: 3600 },
   track: { max: 120, windowSec: 60 },
+  chat: { max: 20, windowSec: 600 },
 };
 
 export const PAGE_SIZE_DEFAULT = 20;

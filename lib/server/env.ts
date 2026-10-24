@@ -22,3 +22,8 @@ export function getEnv(): Env {
   cachedEnv = parsed.data;
   return cachedEnv;
 }
+
+// Same lookup order @google/adk uses; the SDK reads the key from process.env itself, this only decides availability.
+export function getChatApiKey(): string | undefined {
+  return process.env.GOOGLE_GENAI_API_KEY || process.env.GOOGLE_API_KEY || process.env.GEMINI_API_KEY || undefined;
+}

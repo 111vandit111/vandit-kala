@@ -1,6 +1,7 @@
 import { z } from "zod";
+import { CHAT_LIMITS } from "../chatLimits";
 import { ALLOWED_IMAGE_HOSTS } from "../imageHosts";
-import { CONTACT_LIMITS, TEXT_LIMITS, TRACKED_PROFILE_TYPES, type Resource } from "./limits";
+import { CONTACT_LIMITS, TEXT_LIMITS, TRACKED_PROFILE_TYPES, type ProfileType, type Resource } from "./limits";
 
 const MAX_LEVEL = 100;
 const MAX_YEARS = 80;
@@ -143,3 +144,18 @@ export const contactSchema = z
 export const trackSchema = z.object({ type: z.enum(TRACKED_PROFILE_TYPES as [string, ...string[]]) }).strict();
 
 export const loginSchema = z.object({ password: z.string().min(1).max(200) }).strict();
+
+const chatTurnSchema = z
+  .object({
+    role: z.enum(["user", "model"]),
+    text: z.string().min(1).max(CHAT_LIMITS.historyText),
+  })
+  .strict();
+
+export const chatSchema = z
+  .object({
+    message: z.string().trim().min(1).max(CHAT_LIMITS.message),
+    history: z.array(chatTurnSchema).max(CHAT_LIMITS.historyTurns).optional(),
+    profile: z.enum(TRACKED_PROFILE_TYPES as [ProfileType, ...ProfileType[]]).optional(),
+  })
+  .strict();
