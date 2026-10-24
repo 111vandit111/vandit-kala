@@ -20,6 +20,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   alternates: { canonical: "/" },
   applicationName: "Vandit Kala",
+  verification: { google: "fO7_oFN5msJi_hdrMoe84T9hLnUq09ozGd3wLAdHvzg" },
   robots: {
     index: true,
     follow: true,
