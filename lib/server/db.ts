@@ -8,7 +8,7 @@ const globalForMongoose = globalThis as typeof globalThis & {
 export function connectDb(): Promise<typeof mongoose> {
   if (!globalForMongoose.mongoosePromise) {
     globalForMongoose.mongoosePromise = mongoose
-      .connect(getEnv().MONGODB_URI, { autoIndex: true })
+      .connect(getEnv().MONGODB_URI, { autoIndex: true, serverSelectionTimeoutMS: 5000 })
       .catch((err: unknown) => {
         globalForMongoose.mongoosePromise = undefined;
         throw err;

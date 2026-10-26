@@ -4,6 +4,7 @@ import { checkRateLimit } from "../../../../lib/server/rateLimit";
 import { chatSchema } from "../../../../lib/server/schemas";
 
 export const runtime = "nodejs";
+export const maxDuration = 30;
 
 export async function POST(request: Request) {
   try {

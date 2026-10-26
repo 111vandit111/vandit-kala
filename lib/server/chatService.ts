@@ -15,6 +15,7 @@ const VISITOR_ID = "visitor";
 const KNOWLEDGE_TTL_MS = 60000;
 const MODEL_ATTEMPTS = 2;
 const RETRY_DELAY_MS = 300;
+const MODEL_TIMEOUT_MS = 20000;
 const FALLBACK_REPLY = "Sorry, I couldn't put an answer together. Try asking again, or message Vandit directly.";
 
 const TONE_BY_PROFILE: Record<ProfileType, string> = {
@@ -60,8 +61,16 @@ function sleep(ms: number): Promise<void> {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
+// Importing the SDK is slow on a cold start; answerQuestion warms it while the knowledge loads.
+let adkPromise: Promise<typeof import("@google/adk")> | undefined;
+
+function loadAdk(): Promise<typeof import("@google/adk")> {
+  adkPromise ??= import("@google/adk");
+  return adkPromise;
+}
+
 async function askModel(instruction: string, prompt: string): Promise<string> {
-  const { LlmAgent, InMemoryRunner, isFinalResponse, stringifyContent } = await import("@google/adk");
+  const { LlmAgent, InMemoryRunner, isFinalResponse, stringifyContent } = await loadAdk();
   const agent = new LlmAgent({
     name: AGENT_NAME,
     model: CHAT_MODEL,
@@ -89,10 +98,21 @@ async function askModel(instruction: string, prompt: string): Promise<string> {
 }
 
 async function askModelWithRetry(instruction: string, prompt: string): Promise<string> {
+  const deadlineMs = Date.now() + MODEL_TIMEOUT_MS;
   for (let attempt = 0; attempt < MODEL_ATTEMPTS; attempt += 1) {
     if (attempt > 0) await sleep(RETRY_DELAY_MS);
-    const text = await askModel(instruction, prompt);
-    if (text) return text;
+    const remainingMs = deadlineMs - Date.now();
+    if (remainingMs <= 0) break;
+    let timer: ReturnType<typeof setTimeout> | undefined;
+    const timeout = new Promise<never>((_, reject) => {
+      timer = setTimeout(() => reject(new ChatUnavailableError("Chat model timed out")), remainingMs);
+    });
+    try {
+      const text = await Promise.race([askModel(instruction, prompt), timeout]);
+      if (text) return text;
+    } finally {
+      clearTimeout(timer);
+    }
   }
   return "";
 }
@@ -103,7 +123,7 @@ export async function answerQuestion(input: {
   profile?: ProfileType;
 }): Promise<ChatReply> {
   if (!getChatApiKey()) throw new ChatUnavailableError();
-  const { text: knowledgeText, site } = await loadKnowledge();
+  const [{ text: knowledgeText, site }] = await Promise.all([loadKnowledge(), loadAdk()]);
   const reply = await askModelWithRetry(buildInstruction(knowledgeText, input.profile), buildPrompt(input.history, input.message));
   if (!reply) return resolveReply({ text: FALLBACK_REPLY, blocks: [{ type: "contact" }] }, site);
   const model = parseModelReply(reply);
